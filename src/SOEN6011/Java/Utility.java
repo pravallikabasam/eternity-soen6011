@@ -11,7 +11,7 @@ package SOEN6011.Java;
 public class Utility {
 
     /**
-     * The SOEN6011.Java.Pi is a ratio and is obtained from a circle.
+     * The Pi is a ratio and is obtained from a circle.
      * If the diameter and the circumference of any given circle are known, the value of Pi will be as π = Circumference/ Diameter.
      */
     public static double getPiValue() {
@@ -25,26 +25,26 @@ public class Utility {
     }
 
     /**
-     * This method is to calculate the Power.
+     * This method is to used calculate the Power.
      */
     public static double calculatePower(double base, int exp) {
-        double pow = 1;
+        double power = 1;
         if (exp != 0) {
             int absExponent = exp > 0 ? exp : (-1) * exp;
             for (int i = 1; i <= absExponent; i++) {
-                pow *= base;
+                power *= base;
             }
 
             if (exp < 0) {
 
-                pow = 1.0 / pow;
+                power = 1.0 / power;
             }
         } else {
 
-            pow = 1;
+            power = 1;
         }
 
-        return pow;
+        return power;
     }
 
 }
