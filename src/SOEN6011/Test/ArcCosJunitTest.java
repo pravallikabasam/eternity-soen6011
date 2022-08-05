@@ -11,7 +11,7 @@ import static org.junit.Assert.assertThrows;
 public class ArcCosJunitTest {
 
   /**
-   * Method to test getPiValue function.
+   * Method to test getPiValue function written in the Utility Class.
    */
   @Test
   public void piValueTest() {
@@ -20,7 +20,7 @@ public class ArcCosJunitTest {
   }
 
   /**
-   * Method to test the actual arccos values of x.
+   * Method to test the actual arccos values of x by calling calculateArcCos written in ArcCos class.
    */
   @Test
   public void arccosTest() throws Exception {
@@ -31,6 +31,10 @@ public class ArcCosJunitTest {
 
   }
 
+  /**
+   * Method to calculate value of Power for a given base and exponent by calling the function calculatePower written in the
+   * Utility class
+   */
   @Test
   public void calculatePowerTest() {
     double base = 5.0;
@@ -40,7 +44,8 @@ public class ArcCosJunitTest {
   }
 
   /**
-   * Method to test the invalid value of x.
+   * Method to test if the function calculateArcCos written in ArcCos class is throwing an exception
+   * when an unwanted input is given
    */
   @Test
   public void arccosInvalidTest() throws Exception {
