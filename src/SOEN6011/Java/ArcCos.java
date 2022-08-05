@@ -21,7 +21,7 @@ public class ArcCos {
     static double pi = getPiValue();
 
     /**
-     * Main method to run the Function calc.
+     * This main method is to run the Function calculateArcCos.
      *
      * @throws Exception when the input number is not between [-1,1].
      */
