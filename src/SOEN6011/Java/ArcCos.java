@@ -2,6 +2,8 @@ package SOEN6011.Java;
 
 import java.text.DecimalFormat;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static SOEN6011.Java.Utility.*;
 
@@ -14,32 +16,39 @@ import static SOEN6011.Java.Utility.*;
  */
 public class ArcCos {
 
+    private static final Logger LOG = Logger.getLogger(ArcCos.class.getName());
     static Scanner sc = new Scanner(System.in);
     static double pi = getPiValue();
 
     /**
-     * Main method to run the Function.
+     * Main method to run the Function calc.
      *
-     * @throws Exception when the input number is not between [1,-1].
+     * @throws Exception when the input number is not between [-1,1].
      */
     public static void main(String[] args) {
         do {
             System.out.println("Enter the number to calculate the Inverse of Cosine: ");
-            double num = sc.nextDouble();
+            String input = sc.next();
+            double num = 0.0;
+            try{
+                num = Double.parseDouble(input);
+            } catch (NumberFormatException e) {
+                LOG.log(Level.SEVERE,"Invalid input, please enter a number between [-1,1]",e.getMessage());
+            }
             try {
-                double arccos = calculateArcos(num);
+                double arccos = calculateArccos(num);
                 System.out.println("arccos("+num+")"+" = "+arccos+" deg");
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                LOG.log(Level.SEVERE,"Invalid input, please enter a number between [-1,1]",e.getMessage());
             }
         } while (true);
     }
 
-    public static double calculateArcos(double num) throws Exception {
+    public static double calculateArccos(double num) throws Exception {
 
         double sum = num;
 
-        double arccos = 0.0;
+        double arccos;
 
         if (num > 1 || num < -1) {
             throw new Exception("Input Values should be between -1 and 1");
