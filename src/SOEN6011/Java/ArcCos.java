@@ -30,77 +30,60 @@ public class ArcCos {
             System.out.println("Enter the number to calculate the Inverse of Cosine: ");
             String input = sc.next();
             double num = 0.0;
-            try{
+            try {
                 num = Double.parseDouble(input);
             } catch (NumberFormatException e) {
-                LOG.log(Level.SEVERE,"Invalid input, please enter a number between [-1,1]",e.getMessage());
+                LOG.log(Level.SEVERE , "Invalid input, please enter a number between [-1,1]");
             }
             try {
-                double arccos = calculateArccos(num);
-                System.out.println("arccos("+num+")"+" = "+arccos+" deg");
+                double arccos = calculateArcCos(num);
+                System.out.println("arccos(" + num + ")" + " = " + arccos + " deg");
             } catch (Exception e) {
-                LOG.log(Level.SEVERE,"Invalid input, please enter a number between [-1,1]",e.getMessage());
+                LOG.log(Level.INFO , "Invalid input, please enter a number between [-1,1]");
             }
         } while (true);
     }
 
-    public static double calculateArccos(double num) throws Exception {
-
+    /**
+     * @param num This variable accepts a number of double data type.
+     *            Constraints   ---   -1 <= num <= 1. Throws Exception if the constraints are not satisified.
+     * @return Returns the Inverse Cosine value of a given number
+     * @throws Exception Throws Exception if the input number is not between [-1,1]
+     */
+    public static double calculateArcCos(double num) throws Exception {
         double sum = num;
-
-        double arccos;
-
+        double arcCos;
         if (num > 1 || num < -1) {
             throw new Exception("Input Values should be between -1 and 1");
         }
-
         if (num == 1.0) {
-            arccos = 0;
+            arcCos = 0;
         } else if (num == -1.0) {
-            arccos = pi;
+            arcCos = pi;
         } else if (num == 0.0) {
-            arccos = (pi) / 2;
+            arcCos = (pi) / 2;
         } else {
-            for (int i = 1; i < 100; i++) {
-
+            for (int i = 1 ; i < 100 ; i++) {
                 int j = i;
-
                 double temp = 1.0;
-
                 int n = 1;
-
                 while (j >= 1) {
-
                     double s = ((double) n) / (n + 1);
-
                     temp = temp * s;
-
                     j--;
-
                     n += 2;
-
                 }
-                double power = calculatePower(num, n);
+                double power = calculatePower(num , n);
                 double a = temp * power;
-
                 double b = a / n;
-
                 sum = sum + b;
-
             }
-
             double rad = (pi / 2) - sum;
-
             double deg = rad * 180 / pi;
-
             DecimalFormat df = new DecimalFormat("0.000000");
-
             String formatted = df.format(deg);
-
-            arccos = Double.parseDouble(formatted);
-
+            arcCos = Double.parseDouble(formatted);
         }
-        return arccos;
+        return arcCos;
     }
-
 }
