@@ -24,8 +24,8 @@ public class ArcCosJunitTest {
    */
   @Test
   public void arccosTest() throws Exception {
-    double x = ArcCos.calculateArcos(-0.987);
-    double y = ArcCos.calculateArcos(0.5);
+    double x = ArcCos.calculateArccos(-0.987);
+    double y = ArcCos.calculateArccos(0.5);
     assertEquals(170.609319, x, 0);
     assertEquals(60.041329, y, 0);
 
@@ -38,7 +38,7 @@ public class ArcCosJunitTest {
   public void arccosInvalidTest() throws Exception {
 
     Exception thrown = assertThrows(Exception.class, () -> {
-      double x = ArcCos.calculateArcos(100);
+      double x = ArcCos.calculateArccos(100);
     });
     assertEquals("Input Values should be between -1 and 1", thrown.getMessage());
   }
